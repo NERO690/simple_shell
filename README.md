@@ -1,60 +1,98 @@
-###MyShell
+# Our own simple shell
 
-This is a simple shell program written in C. It demonstrates core concepts like:
+This is our self owned simple shell in C language.
 
-* Reading user input
-* Parsing input into arguments
-* Executing commands
-* Handling memory allocation
-* Files
-* main.c - Contains the main loop that:
+### About
 
+Shell is a user interface to use the services of a computer. It can be a command-line interface –the one we will build- or graphical user interface, like regular software such as Windows Office.
 
-
+### Compilation
+This simple shell is compiled with:
+```
+gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 ```
 
-- Prints prompt and reads user input
-- Tokenizes input into arguments
-- Executes command
-- Frees allocated memory
+### Output
+This program have exact same output as ```sh``` as well as the exact same error output. The only difference is when it prints an error, the name of the program is equivalent to ```argv[0]```.
+
+#### Example of error with ```sh```:
 ```
-main.h - Header file with constants, macros, and function prototypes
-
-### helpers.c - Will contain helper functions like:
-
+$ echo "qwerty" | /bin/sh
+/bin/sh: 1: qwerty: not found
+$ echo "qwerty" | /bin/../bin/sh
+/bin/../bin/sh: 1: qwerty: not found
+$
 ```
 
-- Getting user input
-- Copying strings
-- Tokenizing strings  
-- Getting command path
+#### Error with our program:
 
 ```
-execute.c - Will contain function to execute commands
+$ echo "qwerty" | ./hsh
+./hsh: 1: qwerty: not found
+$ echo "qwerty" | ./././hsh
+./././hsh: 1: qwerty: not found
+$
+```
+### Testing
+#### Our shell work like this in interactive mode:
+```
+$ ./hsh
+($) /bin/ls
+hsh main.c shell.c
+($)
+($) exit
+$
+```
 
-###Functions
-main - Entry point and main loop
-get_line - Reads input from user into buffer
-copy_str - Duplicates a string
-str_tokenize - Splits string into tokens by delimiter
-execute - Executes command with arguments
-get_cmd_path - Finds full path for command
-Compiling
-The project uses Make. To compile the executable:
+#### But also in non-interactive mode:
+```
+$ echo "/bin/ls" | ./hsh
+hsh main.c shell.c test_ls_2
+$
+$ cat test_ls_2
+/bin/ls
+/bin/ls
+$
+$ cat test_ls_2 | ./hsh
+hsh main.c shell.c test_ls_2
+hsh main.c shell.c test_ls_2
+$
+```
+### Examples
+```
+$ /bin/pwd
+/home/wiseman/simple_shell
+```
 
+```
+$ ls -la
+total 85
+drwxrwxrwx 1 wiseman wiseman   512 Aug 19 15:02 .
+drwxr-x--- 1 wiseman wiseman   512 Aug 19 14:23 ..
+drwxrwxrwx 1 wiseman wiseman   512 Aug 19 14:23 .git
+-rw-rw-rw- 1 wiseman wiseman  3456 Aug 19 15:03 README.md
+-rw-rw-rw- 1 wiseman wiseman   858 Aug 19 14:18 _setenv.c
+-rw-rw-rw- 1 wiseman wiseman  1251 Aug 16 23:50 _strtok.c
+-rw-rw-rw- 1 wiseman wiseman   434 Aug 19 10:58 _unset.c
+-rwxrwxrwx 1 wiseman wiseman 17648 Aug 19 08:53 a.out
+-rw-rw-rw- 1 wiseman wiseman   536 Aug 19 14:09 break_input.c
+-rw-rw-rw- 1 wiseman wiseman   563 Aug 19 14:45 checkargs.c
+-rw-rw-rw- 1 wiseman wiseman   231 Aug 19 10:39 environ.c
+-rw-rw-rw- 1 wiseman wiseman   537 Aug 19 14:16 execute.c
+-rw-rw-rw- 1 wiseman wiseman   356 Aug 19 14:13 exit_com.c
+-rw-rw-rw- 1 wiseman wiseman   268 Aug 19 07:49 free_buff.c
+-rw-rw-rw- 1 wiseman wiseman   500 Aug 19 14:14 handle_comment.c
+-rw-rw-rw- 1 wiseman wiseman   430 Aug 19 08:51 handle_coms.c
+-rwxrwxrwx 1 wiseman wiseman 17664 Aug 19 14:43 hsh
+-rw-rw-rw- 1 wiseman wiseman   667 Aug 19 14:40 main.c
+-rw-rw-rw- 1 wiseman wiseman   702 Aug 19 14:15 main.h
+```
 
-###make all
-This will compile main.c and any additional .c files.
+```
+$ Ethio
+./hsh: No such file or directory
+```
 
-###Running
-To run the shell after compiling:
-
-
-./myshell
-Coding Style
-This project follows the Betty style guidelines.
-
-###Contributing
-Feel free to contribute by opening issues for bugs/features and submitting pull requests.
-
-Let me know if you need any other changes to the README formatting or contents contact [christmas](www.facebook.com)!
+### Authors
+[Wiseman Umanah](https://github.com/wiseman-umanah)
+[Sandra Ogehenesode](https://github.com/san
