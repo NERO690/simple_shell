@@ -3,7 +3,7 @@
 static int COUNT_LINES;
 
 /**
- * update_count_lines - Counts the lines in a previo
+ * Counts the lines in a previous
 */
 void update_count_lines(void)
 {
@@ -42,7 +42,7 @@ void update_count_lines(void)
 }
 
 /**
- * get_history_lines_count - Returns the lines count of history file
+ * get_history_lines_count - Returns the line count of the history file
  *
  * Return: Pointer to lines count
 */
