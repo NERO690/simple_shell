@@ -1,4 +1,4 @@
-# Simple Shell by Nelson
+# Simple Shell by Nelson and Hilda
 
 This is our self-owned simple shell in C language.
 
